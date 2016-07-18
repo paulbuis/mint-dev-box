@@ -89,7 +89,7 @@ echo " ==> docker-compose version:"
 docker-compose --version
 
 echo " ==> Installing node.js ..."
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 $apt install nodejs
 echo " ==> node version:"
 node --version
