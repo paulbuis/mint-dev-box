@@ -1,5 +1,5 @@
 {
-  "_comment": "Build with `packer build ubuntu.json`",
+  "_comment": "Build with `packer build -var-file=mint-cinnamon-XXXX.json mint.json`",
   "builders": [{
     "vm_name": "{{user `vm_name`}}",
     "type": "virtualbox-iso",

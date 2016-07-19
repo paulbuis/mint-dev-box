@@ -10,7 +10,9 @@ apt="apt-get -qq -y"
 SCALA_VERSION="2.11.8"
 RUBY_VERSION="2.3"
 GO_VERSION="1.6.2"
-SWIFT_VERSION="2.2.1"
+SWIFT_STATUS_LCASE="preview-2"
+SWIFT_STATUS_UCASE="PREVIEW-2"
+SWIFT_VERSION="3.0"
 SWIFT_PLAT1="ubuntu1404"
 SWIFT_PLAT2="ubuntu14.04"
 DOCKER_COMPOSE_VERSION="1.7.1"
@@ -89,7 +91,7 @@ echo " ==> docker-compose version:"
 docker-compose --version
 
 echo " ==> Installing node.js ..."
-curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 $apt install nodejs
 echo " ==> node version:"
 node --version
@@ -102,8 +104,9 @@ echo " ==> go version:"
 go version
 
 echo " ==> Installing Swift ..."
-curl -sL https://swift.org/builds/swift-${SWIFT_VERSION}-release/${SWIFT_PLAT1}/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE-${SWIFT_PLAT2}.tar.gz | tar  -xz -C /usr/local
-mv /usr/local/swift-${SWIFT_VERSION}-RELEASE-${SWIFT_PLAT2}/ /usr/local/swift/
+curl -sL https://swift.org/builds/swift-${SWIFT_VERSION}-${SWIFT_STATUS_LCASE}/${SWIFT_PLAT1}/swift-${SWIFT_VERSION}-${SWIFT_STATUS_UCASE}/swift-${SWIFT_VERSION}-${SWIFT_STATUS_UCASE}-${SWIFT_PLAT2}.tar.gz | tar  -xz -C /usr/local
+mv /usr/local/swift-${SWIFT_VERSION}-${SWIFT_STATUS_UCASE}-${SWIFT_PLAT2}/ /usr/local/swift/
+chmod -R o+r /usr/local/swift
 echo "export PATH=\$PATH:/usr/local/swift/usr/bin" >> /etc/profile.d/swift.sh
 source /etc/profile.d/swift.sh
 echo " ==> swift version:"
